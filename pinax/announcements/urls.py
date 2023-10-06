@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.urls import path
 
 from .views import (
     AnnouncementCreateView,
@@ -12,10 +12,10 @@ from .views import (
 app_name = "pinax_announcements"
 
 urlpatterns = [
-    url(r"^$", AnnouncementListView.as_view(), name="announcement_list"),
-    url(r"^create/$", AnnouncementCreateView.as_view(), name="announcement_create"),
-    url(r"^(?P<pk>\d+)/$", AnnouncementDetailView.as_view(), name="announcement_detail"),
-    url(r"^(?P<pk>\d+)/hide/$", AnnouncementDismissView.as_view(), name="announcement_dismiss"),
-    url(r"^(?P<pk>\d+)/update/$", AnnouncementUpdateView.as_view(), name="announcement_update"),
-    url(r"^(?P<pk>\d+)/delete/$", AnnouncementDeleteView.as_view(), name="announcement_delete"),
+    path("", AnnouncementListView.as_view(), name="announcement_list"),
+    path("create/", AnnouncementCreateView.as_view(), name="announcement_create"),
+    path("<int:pk>/", AnnouncementDetailView.as_view(), name="announcement_detail"),
+    path("<int:pk>/hide/", AnnouncementDismissView.as_view(), name="announcement_dismiss"),
+    path("<int:pk>/update/", AnnouncementUpdateView.as_view(), name="announcement_update"),
+    path("<int:pk>/delete/", AnnouncementDeleteView.as_view(), name="announcement_delete"),
 ]

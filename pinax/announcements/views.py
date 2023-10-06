@@ -37,7 +37,7 @@ class AnnouncementDismissView(SingleObjectMixin, View):
         else:
             status = 409
 
-        if request.is_ajax():
+        if request.headers.get("x-requested-with") == "XMLHttpRequest":
             return JsonResponse({}, status=status)
         else:
             return HttpResponse(content=b"", status=status)
@@ -97,6 +97,12 @@ class AnnouncementDeleteView(ProtectedView, DeleteView):
             request=self.request
         )
         return response
+
+    # https://github.com/django/django/blob/99dcba90b4d36272d6c2e0fd96eec1ee5883db4c/django/views/generic/edit.py#L261
+    # DeleteViewCustomDeleteWarning: DeleteView uses FormMixin to handle POST requests.
+    # As a consequence, any custom deletion logic in AnnouncementDeleteView.delete() handler should be moved to form_valid().
+    def form_valid(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
 
 
 class AnnouncementListView(ProtectedView, ListView):

@@ -4,7 +4,7 @@
 
 [![](https://img.shields.io/pypi/v/pinax-announcements.svg)](https://pypi.python.org/pypi/pinax-announcements/)
 
-[![CircleCi](https://img.shields.io/circleci/project/github/pinax/pinax-announcements.svg)](https://circleci.com/gh/pinax/pinax-announcements)
+[![Github Actions](https://github.com/openedx/pinax-announcements/actions/workflows/ci.yml/badge.svg)](https://github.com/openedx/pinax-announcements/actions/workflows/ci.yml)
 [![Codecov](https://img.shields.io/codecov/c/github/pinax/pinax-announcements.svg)](https://codecov.io/gh/pinax/pinax-announcements)
 [![](https://img.shields.io/github/contributors/pinax/pinax-announcements.svg)](https://github.com/pinax/pinax-announcements/graphs/contributors)
 [![](https://img.shields.io/github/issues-pr/pinax/pinax-announcements.svg)](https://github.com/pinax/pinax-announcements/pulls)
@@ -75,10 +75,10 @@ Announcements have title and content, with options for filtering their display:
 
 #### Supported Django and Python Versions
 
-Django / Python | 3.6 | 3.7 | 3.8
---------------- | --- | --- | ---  
-2.2  |  *  |  *  |  *   
-3.0  |  *  |  *  |  *  
+Django / Python | 3.8|
+--------------- | --- |
+3.2  |  *
+4.2  |  *
 
 
 ## Documentation
@@ -271,6 +271,12 @@ Since `bootstrap` template tags and filters are no longer loaded, you'll also ne
 
 
 ## Change Log
+
+### 4.1.0
+
+* Add Django 4.2
+* Drop Django 2.2, 3.0 and 3.1 and Python 3.6 and 3.7 support
+* Moved CI from CircleCI to Github Actions
 
 ### 4.0.0
 
