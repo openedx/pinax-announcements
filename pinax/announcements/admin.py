@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from .models import Announcement, Dismissal
 
 
+@admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
     list_display = ("title", "creator", "creation_date", "members_only")
     list_filter = ("members_only",)
@@ -22,6 +23,7 @@ class AnnouncementAdmin(admin.ModelAdmin):
         obj.save()
 
 
+@admin.register(Dismissal)
 class DismissalAdmin(admin.ModelAdmin):
     list_display = ("user", "announcement", "dismissed_at")
 
@@ -32,7 +34,3 @@ class DismissalAdmin(admin.ModelAdmin):
         else:
             username_search = "user__username"
         return (username_search, "announcement__title")
-
-
-admin.site.register(Announcement, AnnouncementAdmin)
-admin.site.register(Dismissal, DismissalAdmin)
